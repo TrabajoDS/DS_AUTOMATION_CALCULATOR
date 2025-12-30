@@ -1,5 +1,6 @@
 using Xunit;
 using CalculadoraAPI.Controllers;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CalculadoraAPI.Tests;
 
@@ -206,8 +207,16 @@ public class CalculadoraTests
         var controlador = new CalculadoraController();
 
         var resultado = controlador.Dividir(1000000, 250);
-        
+
         Assert.Equal(4000, resultado.Value);
+    }
+
+    [Fact]
+    public void Dividir_EntreCero_ThrowsDivideByZeroException()
+    {
+        var controlador = new CalculadoraController();
+        var resultado = controlador.Dividir(5, 0);
+        Assert.IsType<BadRequestObjectResult>(resultado.Result);
     }
 
 }
