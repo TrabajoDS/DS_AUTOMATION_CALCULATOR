@@ -145,8 +145,18 @@ public class CalculadoraTests
         var controlador = new CalculadoraController();
 
         var resultado = controlador.Multiplicar(-3, 4);
-        
+
         Assert.Equal(-12, resultado.Value);
+    }
+
+    [Fact]
+    public void Multiplicar_NumerosGrandes_ReturnsMultiplicacionCorrecta()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Multiplicar(1000, 2000);
+        
+        Assert.Equal(2000000, resultado.Value);
     }
 
 }
