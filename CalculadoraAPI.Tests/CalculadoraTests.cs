@@ -94,7 +94,17 @@ public class CalculadoraTests
         var controlador = new CalculadoraController();
 
         var resultado = controlador.Restar(5000000, 2000000);
-        
+
         Assert.Equal(3000000, resultado.Value);
+    }
+
+    [Fact]
+    public void Restar_NumerosMixtos_ReturnsRestaCorrecta()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Restar(-5, -10);
+        
+        Assert.Equal(5, resultado.Value);
     }
 }
