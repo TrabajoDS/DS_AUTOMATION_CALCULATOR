@@ -84,7 +84,17 @@ public class CalculadoraTests
         var controlador = new CalculadoraController();
 
         var resultado = controlador.Restar(4, 0);
-        
+
         Assert.Equal(4, resultado.Value);
+    }
+
+    [Fact]
+    public void Restar_NumerosGrandes_ReturnsRestaCorrecta()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Restar(5000000, 2000000);
+        
+        Assert.Equal(3000000, resultado.Value);
     }
 }
