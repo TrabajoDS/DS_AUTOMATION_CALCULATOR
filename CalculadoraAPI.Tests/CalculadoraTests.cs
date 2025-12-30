@@ -5,6 +5,7 @@ namespace CalculadoraAPI.Tests;
 
 public class CalculadoraTests
 {
+    // SUMAR
     [Fact]
     public void Sumar_DosNumeros_ReturnsSumaCorrecta()
     {       
@@ -51,7 +52,19 @@ public class CalculadoraTests
         var controlador = new CalculadoraController();
 
         var resultado = controlador.Sumar(-5, 10);
-        
+
         Assert.Equal(5, resultado.Value);
+    }
+
+
+    // RESTAR
+    [Fact]
+    public void Restar_DosNumeros_ReturnsRestaCorrecta()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Restar(5, 3);
+
+        Assert.Equal(2, resultado.Value);
     }
 }
