@@ -67,4 +67,14 @@ public class CalculadoraTests
 
         Assert.Equal(2, resultado.Value);
     }
+
+    [Fact]
+    public void Restar_ResultadoNegativo_ReturnsCorrecto()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Restar(2, 5);
+        
+        Assert.Equal(-3, resultado.Value);
+    }
 }
