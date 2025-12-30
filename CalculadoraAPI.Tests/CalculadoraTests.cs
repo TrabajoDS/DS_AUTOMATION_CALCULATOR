@@ -196,8 +196,18 @@ public class CalculadoraTests
         var controlador = new CalculadoraController();
 
         var resultado = controlador.Dividir(-9, -3);
-        
+
         Assert.Equal(3, resultado.Value);
+    }
+
+    [Fact]
+    public void Dividir_NumerosGrandes_ReturnsDivisionCorrecta()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Dividir(1000000, 250);
+        
+        Assert.Equal(4000, resultado.Value);
     }
 
 }
