@@ -1,0 +1,57 @@
+using Xunit;
+using CalculadoraAPI.Controllers;
+
+namespace CalculadoraAPI.Tests;
+
+public class CalculadoraTests
+{
+    [Fact]
+    public void Sumar_DosNumeros_ReturnsSumaCorrecta()
+    {       
+        var controlador = new CalculadoraController();
+        
+        var resultado = controlador.Sumar(2, 3);
+
+        Assert.Equal(5, resultado.Value);
+    }
+
+    [Fact]
+    public void Sumar_Negativos_ReturnsResultadoCorrecto()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Sumar(-2, -3);
+
+        Assert.Equal(-5, resultado.Value);
+    }
+
+    [Fact]
+    public void Sumar_CeroYNumero_ReturnsNumero()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Sumar(0, 7);
+
+        Assert.Equal(7, resultado.Value);
+    }
+
+    [Fact]
+    public void Sumar_NumerosGrandes_ReturnsSumaCorrecta()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Sumar(1000000, 2000000);
+
+        Assert.Equal(3000000, resultado.Value);
+    }
+
+    [Fact]
+    public void Sumar_NumerosMixtos_ReturnsSumaCorrecta()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Sumar(-5, 10);
+        
+        Assert.Equal(5, resultado.Value);
+    }
+}
