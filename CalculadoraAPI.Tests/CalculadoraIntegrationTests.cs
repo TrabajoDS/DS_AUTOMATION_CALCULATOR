@@ -38,4 +38,15 @@ public class CalculadoraIntegrationTests : IClassFixture<WebApplicationFactory<P
         Assert.Equal(esperado, resultado);
     }
 
+    [Theory]
+    [InlineData(4, 3, 12)]
+    public async Task MultiplicarEndpoint_DevuelveResultadoEsperado(int a, int b, int esperado)
+    {
+        var response = await _client.GetAsync($"/Calculadora/Multiplicar?a={a}&b={b}");
+        response.EnsureSuccessStatusCode();
+
+        var resultado = await response.Content.ReadFromJsonAsync<int>();
+        Assert.Equal(esperado, resultado);
+    }
+
 }
