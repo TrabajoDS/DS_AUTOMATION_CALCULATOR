@@ -24,4 +24,14 @@ public class CalculadoraTests
 
         Assert.Equal(-5, resultado.Value);
     }
+
+    [Fact]
+    public void Sumar_CeroYNumero_ReturnsNumero()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Sumar(0, 7);
+
+        Assert.Equal(7, resultado.Value);
+    }
 }
