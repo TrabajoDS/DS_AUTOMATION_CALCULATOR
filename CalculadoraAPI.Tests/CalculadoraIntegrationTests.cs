@@ -49,4 +49,21 @@ public class CalculadoraIntegrationTests : IClassFixture<WebApplicationFactory<P
         Assert.Equal(esperado, resultado);
     }
 
+    [Fact]
+    public async Task DividirEndpoint_ConDivisionValida_DevuelveResultado()
+    {
+        var response = await _client.GetAsync("/Calculadora/Dividir?a=10&b=2");
+        response.EnsureSuccessStatusCode();
+
+        var resultado = await response.Content.ReadFromJsonAsync<int>();
+        Assert.Equal(5, resultado);
+    }
+
+    [Fact]
+    public async Task DividirEndpoint_ConDivisionPorCero_DevuelveBadRequest()
+    {
+        var response = await _client.GetAsync("/Calculadora/Dividir?a=10&b=0");
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+    }
+
 }
