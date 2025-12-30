@@ -41,7 +41,17 @@ public class CalculadoraTests
         var controlador = new CalculadoraController();
 
         var resultado = controlador.Sumar(1000000, 2000000);
-        
+
         Assert.Equal(3000000, resultado.Value);
+    }
+
+    [Fact]
+    public void Sumar_NumerosMixtos_ReturnsSumaCorrecta()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Sumar(-5, 10);
+        
+        Assert.Equal(5, resultado.Value);
     }
 }
