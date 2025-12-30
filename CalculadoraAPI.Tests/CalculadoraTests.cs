@@ -1,5 +1,6 @@
 using Xunit;
 using CalculadoraAPI.Controllers;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CalculadoraAPI.Tests;
 
@@ -157,6 +158,65 @@ public class CalculadoraTests
         var resultado = controlador.Multiplicar(1000, 2000);
         
         Assert.Equal(2000000, resultado.Value);
+    }
+
+    // DIVIDIR
+    [Fact]
+    public void Dividir_DosNumeros_ReturnsDivisionCorrecta()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Dividir(10, 2);
+
+        Assert.Equal(5, resultado.Value);
+    }
+
+    [Fact]
+    public void Dividir_EntreUno_ReturnsMismoNumero()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Dividir(7, 1);
+
+        Assert.Equal(7, resultado.Value);
+    }
+
+    [Fact]
+    public void Dividir_NegativoYPositivo_ReturnsNegativo()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Dividir(-8, 2);
+
+        Assert.Equal(-4, resultado.Value);
+    }
+
+    [Fact]
+    public void Dividir_DosNegativos_ReturnsPositivo()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Dividir(-9, -3);
+
+        Assert.Equal(3, resultado.Value);
+    }
+
+    [Fact]
+    public void Dividir_NumerosGrandes_ReturnsDivisionCorrecta()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Dividir(1000000, 250);
+
+        Assert.Equal(4000, resultado.Value);
+    }
+
+    [Fact]
+    public void Dividir_EntreCero_ThrowsDivideByZeroException()
+    {
+        var controlador = new CalculadoraController();
+        var resultado = controlador.Dividir(5, 0);
+        Assert.IsType<BadRequestObjectResult>(resultado.Result);
     }
 
 }

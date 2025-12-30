@@ -23,4 +23,13 @@ public class CalculadoraController : ControllerBase
     {
         return a * b;
     }
+
+    [HttpGet("Dividir")]
+    public ActionResult<int> Dividir(int a, int b)
+    {
+        if (b == 0)
+            return BadRequest("No se puede dividir por cero.");
+
+        return a / b;
+    }
 }
