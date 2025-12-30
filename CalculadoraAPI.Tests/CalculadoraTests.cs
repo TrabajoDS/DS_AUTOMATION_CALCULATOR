@@ -176,8 +176,18 @@ public class CalculadoraTests
         var controlador = new CalculadoraController();
 
         var resultado = controlador.Dividir(7, 1);
-        
+
         Assert.Equal(7, resultado.Value);
+    }
+
+    [Fact]
+    public void Dividir_NegativoYPositivo_ReturnsNegativo()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Dividir(-8, 2);
+        
+        Assert.Equal(-4, resultado.Value);
     }
 
 }
