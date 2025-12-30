@@ -5,6 +5,7 @@ namespace CalculadoraAPI.Tests;
 
 public class CalculadoraTests
 {
+    // SUMAR
     [Fact]
     public void Sumar_DosNumeros_ReturnsSumaCorrecta()
     {       
@@ -51,6 +52,58 @@ public class CalculadoraTests
         var controlador = new CalculadoraController();
 
         var resultado = controlador.Sumar(-5, 10);
+
+        Assert.Equal(5, resultado.Value);
+    }
+
+
+    // RESTAR
+    [Fact]
+    public void Restar_DosNumeros_ReturnsRestaCorrecta()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Restar(5, 3);
+
+        Assert.Equal(2, resultado.Value);
+    }
+
+    [Fact]
+    public void Restar_ResultadoNegativo_ReturnsCorrecto()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Restar(2, 5);
+
+        Assert.Equal(-3, resultado.Value);
+    }
+
+    [Fact]
+    public void Restar_ConCero_ReturnsMismoNumero()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Restar(4, 0);
+
+        Assert.Equal(4, resultado.Value);
+    }
+
+    [Fact]
+    public void Restar_NumerosGrandes_ReturnsRestaCorrecta()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Restar(5000000, 2000000);
+
+        Assert.Equal(3000000, resultado.Value);
+    }
+
+    [Fact]
+    public void Restar_NumerosMixtos_ReturnsRestaCorrecta()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Restar(-5, -10);
         
         Assert.Equal(5, resultado.Value);
     }

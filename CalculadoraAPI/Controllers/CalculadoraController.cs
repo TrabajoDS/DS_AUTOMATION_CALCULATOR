@@ -11,4 +11,10 @@ public class CalculadoraController : ControllerBase
     {
         return a + b;
     }
+
+    [HttpGet("Restar")]
+    public ActionResult<int> Restar(int a, int b)
+    {
+        return a - b;
+    }
 }
