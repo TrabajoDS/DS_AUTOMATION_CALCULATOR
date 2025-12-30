@@ -166,8 +166,18 @@ public class CalculadoraTests
         var controlador = new CalculadoraController();
 
         var resultado = controlador.Dividir(10, 2);
-        
+
         Assert.Equal(5, resultado.Value);
+    }
+
+    [Fact]
+    public void Dividir_EntreUno_ReturnsMismoNumero()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Dividir(7, 1);
+        
+        Assert.Equal(7, resultado.Value);
     }
 
 }
