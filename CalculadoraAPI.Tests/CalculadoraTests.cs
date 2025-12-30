@@ -74,7 +74,17 @@ public class CalculadoraTests
         var controlador = new CalculadoraController();
 
         var resultado = controlador.Restar(2, 5);
-        
+
         Assert.Equal(-3, resultado.Value);
+    }
+
+    [Fact]
+    public void Restar_ConCero_ReturnsMismoNumero()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Restar(4, 0);
+        
+        Assert.Equal(4, resultado.Value);
     }
 }
