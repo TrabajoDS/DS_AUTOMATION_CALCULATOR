@@ -135,8 +135,18 @@ public class CalculadoraTests
         var controlador = new CalculadoraController();
 
         var resultado = controlador.Multiplicar(-3, -4);
-        
+
         Assert.Equal(12, resultado.Value);
+    }
+
+    [Fact]
+    public void Multiplicar_NegativoYPositivo_ReturnsNegativo()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Multiplicar(-3, 4);
+        
+        Assert.Equal(-12, resultado.Value);
     }
 
 }
