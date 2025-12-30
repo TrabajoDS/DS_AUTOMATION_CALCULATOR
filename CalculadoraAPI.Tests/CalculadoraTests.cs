@@ -34,4 +34,14 @@ public class CalculadoraTests
 
         Assert.Equal(7, resultado.Value);
     }
+
+    [Fact]
+    public void Sumar_NumerosGrandes_ReturnsSumaCorrecta()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Sumar(1000000, 2000000);
+        
+        Assert.Equal(3000000, resultado.Value);
+    }
 }
