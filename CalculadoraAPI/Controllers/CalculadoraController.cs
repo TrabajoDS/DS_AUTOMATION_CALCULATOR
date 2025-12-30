@@ -17,4 +17,10 @@ public class CalculadoraController : ControllerBase
     {
         return a - b;
     }
+
+    [HttpGet("Multiplicar")]
+    public ActionResult<int> Multiplicar(int a, int b)
+    {
+        return a * b;
+    }
 }

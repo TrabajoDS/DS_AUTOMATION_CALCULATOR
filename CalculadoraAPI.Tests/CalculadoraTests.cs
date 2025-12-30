@@ -107,4 +107,16 @@ public class CalculadoraTests
         
         Assert.Equal(5, resultado.Value);
     }
+
+    // MULTIPLICAR
+    [Fact]
+    public void Multiplicar_DosNumeros_ReturnsMultiplicacionCorrecta()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Multiplicar(3, 4);
+        
+        Assert.Equal(12, resultado.Value);
+    }
+
 }
