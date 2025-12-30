@@ -159,4 +159,15 @@ public class CalculadoraTests
         Assert.Equal(2000000, resultado.Value);
     }
 
+    // DIVIDIR
+    [Fact]
+    public void Dividir_DosNumeros_ReturnsDivisionCorrecta()
+    {
+        var controlador = new CalculadoraController();
+
+        var resultado = controlador.Dividir(10, 2);
+        
+        Assert.Equal(5, resultado.Value);
+    }
+
 }
