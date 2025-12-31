@@ -21,6 +21,16 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+//Q4
+
+var userInput = Environment.GetEnvironmentVariable("UNSAFE_INPUT");
+
+// DEMO Q4: ejecución insegura de comandos
+if (!string.IsNullOrEmpty(userInput))
+{
+    System.Diagnostics.Process.Start(userInput);
+}
+//Q4
 
 app.Run();
 
