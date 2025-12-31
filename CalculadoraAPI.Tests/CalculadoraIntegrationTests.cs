@@ -17,6 +17,7 @@ public class CalculadoraIntegrationTests : IClassFixture<WebApplicationFactory<P
     [Theory]
     [InlineData(2, 3, 5)]
     [InlineData(-4, 1, -3)]
+    [InlineData(0, 0, 0)]
     public async Task SumarEndpoint_DevuelveResultadoEsperado(int a, int b, int esperado)
     {
         var response = await _client.GetAsync($"/Calculadora/Sumar?a={a}&b={b}");
