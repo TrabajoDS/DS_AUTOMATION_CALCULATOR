@@ -35,10 +35,17 @@ jobs:
       steps:
         - uses: actions/checkout@v4
   
+        - uses: actions/setup-dotnet@v4
+          with:
+            dotnet-version: "8.0.x"
+  
         - name: Setup Snyk
           uses: snyk/actions/setup@master
   
-        - name: Q4 - Static Security Analysis
+        - name: Restore solution
+          run: dotnet restore ./Calculadora.sln
+  
+        - name: Q4 - Dependency vulnerability scan
           env:
             SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-          run: snyk code test
+          run: snyk test --file=./Calculadora.sln --severity-threshold=high
