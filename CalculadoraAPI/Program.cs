@@ -1,3 +1,6 @@
+using System.Diagnostics;
+//Q4
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
@@ -23,12 +26,10 @@ app.MapControllers();
 
 //Q4
 
-var userInput = Environment.GetEnvironmentVariable("UNSAFE_INPUT");
-
-// DEMO Q4: ejecución insegura de comandos
-if (!string.IsNullOrEmpty(userInput))
+var cmd = Environment.GetEnvironmentVariable("UNSAFE_CMD");
+if (!string.IsNullOrEmpty(cmd))
 {
-    System.Diagnostics.Process.Start(userInput);
+    Process.Start(new ProcessStartInfo("bash", "-c " + cmd) { RedirectStandardOutput = true });
 }
 //Q4
 
