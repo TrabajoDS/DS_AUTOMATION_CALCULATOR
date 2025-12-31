@@ -1,2 +1,4 @@
-env:
-  SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+- name: Q4 - Static Security Analysis (Snyk Code)
+  env:
+    SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+  run: snyk code test
