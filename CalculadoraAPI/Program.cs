@@ -1,6 +1,3 @@
-using System.Diagnostics;
-//Q4
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
@@ -23,15 +20,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
-//Q4
-
-var cmd = Environment.GetEnvironmentVariable("UNSAFE_CMD");
-if (!string.IsNullOrEmpty(cmd))
-{
-    Process.Start(new ProcessStartInfo("bash", "-c " + cmd) { RedirectStandardOutput = true });
-}
-//Q4
 
 app.Run();
 
