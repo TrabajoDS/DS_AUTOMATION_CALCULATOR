@@ -1,3 +1,5 @@
+AppContext.SetSwitch("System.IO.DisableFileSystemWatcher", true);
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
