@@ -66,7 +66,6 @@ public class CalculadoraIntegrationTests : IClassFixture<WebApplicationFactory<P
     public async Task DividirEndpoint_ConDivisionPorCero_DevuelveBadRequest()
     {
         var response = await _client.GetAsync("/Calculadora/Dividir?a=10&b=0");
-        var response = await _client.GetAsync("/Calculadora/Dividir?a=10&b=0");
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
     }
 
